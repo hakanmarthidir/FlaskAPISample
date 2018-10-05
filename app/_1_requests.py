@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -43,6 +43,13 @@ def fifthsample():
     name = request.args.get('name')
     age = request.args.get('age')
     return 'multi parameters {} {}'.format(name, age)
+
+#post json
+@app.route('/jsonstring', methods=['POST'])
+def fifthjsonsample():
+    name = request.get_json().get('name', '')
+    print(name)
+    return jsonify(request.get_json())
 
 
 # SAMPLE 6 with Html

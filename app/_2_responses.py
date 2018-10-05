@@ -1,4 +1,4 @@
-from flask import Flask, make_response, redirect,abort, jsonify
+from flask import Flask, make_response, redirect,abort, jsonify, Response
 import json
 app = Flask(__name__)
 
@@ -9,6 +9,14 @@ def makeresponse():
     response = make_response('<h1>Make Response Sample</h1>')
     response.set_cookie('color', 'red')
     return response
+
+#alternative to makeresponse
+@app.route('/makeresponsemime')
+def makeresponsemime():
+    response = Response('{"name":"hakan"}', 200, mimetype='application/json')
+    response.headers['Location'] = "/makeresponse"
+    return response
+
 
 #Sample 2 redirect
 #http://127.0.0.1:5000/redirector

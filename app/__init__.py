@@ -2,7 +2,7 @@ from flask import Flask, Blueprint
 
 app = Flask(__name__)
 api = Blueprint('api', __name__)
-app.secret_key = "super secret key"
+app.secret_key = "my super secret key"
 
 from . import _10_blueprint
 from . import _12_cookies
